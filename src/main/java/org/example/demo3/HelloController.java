@@ -11,40 +11,78 @@ public class HelloController {
     @FXML
     private TextField digitInput;
     @FXML
+    private TextField digitCountInput;
+    @FXML
     private Label resultLabel;
     @FXML
     private Label statusLabel;
+    @FXML
+    private Label attemptLabel;
+    @FXML
+    private Button startButton;
 
     private String secretNumber;
-//    private StringBuilder currentGuess;
+    private int digitCount;
+    private int attempts;
 
     @FXML
     public void initialize(){
-        generateSeretNumber();
-//        currentGuess = new StringBuilder("______");
-        statusLabel.setText("Guess the 6-digit number!");
+        resetGame();
+    }
+
+    private void resetGame(){
+        secretNumber="";
+        digitCount=0;
+        attempts=0;
+        digitInput.setDisable(true);
+        digitInput.clear();
+        resultLabel.setText("");
+        statusLabel.setText("Set the number of digits and click Start!");
+        attemptLabel.setText("Attempts: 0");
     }
 
     private void generateSeretNumber(){
         Random random = new Random();
-        secretNumber = String.format("%06d", random.nextInt(1_000_000));
+        StringBuilder secret = new StringBuilder();
+        for(int i=0; i<digitCount; i++){
+            secret.append(random.nextInt(10));
+        }
+        secretNumber=secret.toString();
+//        secretNumber = String.format("%06d", random.nextInt(1_000_000));
         /*System.out.println("Secret Number: "+secretNumber);*/
     }
 
     @FXML
-    public void handleSubmit(){
-        String input = digitInput.getText();
-        if(input.length()!=6 || !input.matches("\\d{6}")){
-            resultLabel.setText("Enter a valid 6-digit number");
+    public void handleStart() {
+        String input = digitCountInput.getText();
+        if (!input.matches("\\d+") || Integer.parseInt(input) < 1 || Integer.parseInt(input) > 10) {
+            resultLabel.setText("Enter a valid digit count (1-10)!");
             return;
         }
 
 //        char guessedDigit = input.charAt(0);
 //        int position=currentGuess.indexOf("_");
-        StringBuilder feedback=new StringBuilder();
-        boolean[] matchedInSecret = new boolean[6];
+        digitCount = Integer.parseInt(input);
+        generateSeretNumber();
+        digitInput.setDisable(false);
+        statusLabel.setText("Guess the " + digitCount + "-digit number!");
+        attempts = 0;
+        attemptLabel.setText("Attempts: 0");
+    }
+    @FXML
+    public void handleSubmit(){
+        String input = digitInput.getText();
+        if(input.length()!=digitCount||!input.matches("\\d{"+digitCount+"}")){
+            resultLabel.setText("Enter a valid"+digitCount+"-digit number");
+            return;
+        }
+        attempts++;
+        attemptLabel.setText("Attempts: "+attempts);
 
-        for(int i=0;i<6;i++){
+        StringBuilder feedback = new StringBuilder();
+        boolean[] matchedInSecret = new boolean[digitCount];
+
+        for(int i=0; i<digitCount; i++){
             if(input.charAt(i)==secretNumber.charAt(i)){
                 feedback.append("+");
                 matchedInSecret[i]=true;
@@ -53,10 +91,10 @@ public class HelloController {
             }
         }
 
-        for(int i=0; i<6; i++){
+        for(int i=0; i<digitCount;i++){
             if(feedback.charAt(i)!='+'){
-                boolean found=false;
-                for(int j=0;j<6;j++){
+                boolean found = false;
+                for(int j=0;j<digitCount;j++){
                     if(!matchedInSecret[j]&&input.charAt(i)==secretNumber.charAt(j)){
                         feedback.setCharAt(i,'*');
                         matchedInSecret[j]=true;
@@ -69,15 +107,16 @@ public class HelloController {
                 }
             }
         }
-         resultLabel.setText("Feedback: "+feedback);
-        if(feedback.toString().equals("++++++")){
-            statusLabel.setText("Congratulations! You guessed the number: "+secretNumber);
+        resultLabel.setText("Feedback: "+feedback);
+        if(feedback.toString().equals("+".repeat(digitCount))){
+            statusLabel.setText("Congratulations! You guessed the number in "+attempts+" attempts!");
             digitInput.setDisable(true);
         }else{
             statusLabel.setText("Try again!");
         }
-
         digitInput.clear();
     }
+
+
 
 }
