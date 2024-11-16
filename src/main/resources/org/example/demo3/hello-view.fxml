@@ -5,12 +5,20 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.demo3.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
   </padding>
+  <Label text="Guess the Number Game" style="-fx-font-size: 20px"/>
+  <Label text="Enter a digit:"/>
+  <TextField fx:id="digitInput" maxWidth="100"/>
+  <Button text="Submit" onAction="#handleSubmit"/>
+  <Label text="Result:"/>
+  <Label fx:id="resultLabel" text="" style="-fx-font-size: 16px;"/>
+  <Label fx:id="statusLabel" text="Start guessing!"/>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<!--  <Label fx:id="welcomeText"/>-->
+<!--  <Button text="Hello!" onAction="#onHelloButtonClick"/>-->
 </VBox>
