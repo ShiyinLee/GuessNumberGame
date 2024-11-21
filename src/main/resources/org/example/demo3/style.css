@@ -2,3 +2,25 @@
     -fx-background-color: #9FC490;
 }
 
+.button {
+    -fx-background-color: #1976D2; /* Blue background */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 16px;
+    -fx-padding: 10 20; /* Adds padding for a larger button */
+    -fx-border-color: #BBDEFB;
+    -fx-border-width: 2px;
+    -fx-background-radius: 10px; /* Rounded corners */
+    -fx-border-radius: 10px;
+}
+
+/* Button hover effect */
+.button:hover {
+    -fx-background-color: #1565C0; /* Darker blue on hover */
+    -fx-cursor: hand; /* Change cursor to hand on hover */
+}
+
+/* Style for a focused button */
+.button:focused {
+    -fx-border-color: #FFEB3B; /* Yellow border when focused */
+}
+
