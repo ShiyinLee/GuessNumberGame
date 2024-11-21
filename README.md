@@ -61,4 +61,3 @@ README.md                      # This file
 ![img4](4.png)
 ![img5](5.png)
 ![img6](6.png)
-![img7](7.png)
