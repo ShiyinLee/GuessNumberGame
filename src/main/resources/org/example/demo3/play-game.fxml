@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="441.0" prefWidth="422.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo3.HelloController"
+<VBox alignment="CENTER" prefHeight="480.0" prefWidth="640.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo3.HelloController"
       stylesheets="@style.css">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -35,7 +35,8 @@
   <TextField fx:id="digitInput" disable="true" layoutX="10" layoutY="80" prefHeight="50.0" prefWidth="387.0" />
   <Button layoutX="10" layoutY="120" onAction="#handleSubmit" text="Submit" />
   <Label fx:id="resultLabel" layoutX="10" layoutY="120" />
-  <Label fx:id="attemptLabel" layoutX="10" layoutY="150" />
+  <Label fx:id="attemptLabel" layoutX="5" layoutY="150" />
+   <Button text="Back to menu" onAction="#backtomenu"/>
 <!--  <Label text="Result:" />-->
 <!--  <Label fx:id="resultLabel" style="-fx-font-size: 16px;" text="" />-->
 <!--  <Label fx:id="statusLabel" text="Start guessing!" />-->

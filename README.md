@@ -31,23 +31,34 @@ The game tracks the number of attempts and provides an intuitive GUI with custom
 6. The attempt counter displays how many tries you've made.
 
 ## Project Structure
+```
 src/
 ├── controllers/
-│   ├── HelloController.java    # Main game logic and controller for the UI
+│   ├── menuController.java    # controller for the menu-screen
+│   ├── instructionController.java   #controller for the instruction-screen
+│   ├── HelloController.java     #controller for the play-game-screen, main logic of the game
+│
 │
 ├── views/
-│   ├── play-game.fxml          # Layout file for the JavaFX GUI
+│   ├── menu.fxml           #lay out of the menu-screen    
+│   ├── instruction.fxml    #lay out of the instruction-screen
+│   ├── play-game.fxml      #lay out of the play-game-screen
 │
 ├── HelloApplication.java                  # Entry point for the application
 │
 resources/
-├── styles.css                 # CSS file for customizing the UI
+├── menu.css                 # CSS file for customizing the UI of menu-screen
+├── instruction.css          # CSS file for customizing the UI of instruction-screen
+├── styles.css               # CSS file for customizing the UI of play-game-screen
 │
 README.md                      # This file
+```
 
 ## Screenshots
-![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
-![img_4.png](img_4.png)
+![img1](1.png)
+![img2](2.png)
+![img3](3.png)
+![img4](4.png)
+![img5](5.png)
+![img6](6.png)
+![img7](7.png)
